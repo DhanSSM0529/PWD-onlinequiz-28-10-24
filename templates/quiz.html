@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Online Quiz</h1>
+        <form id="quizForm">
+            {% for question in questions %}
+            <div class="question" id="question-{{ question.id }}">
+                <h3>{{ question.question }}</h3>
+                {% for option in question.options %}
+                <label>
+                    <input type="radio" name="{{ question.id }}" value="{{ option }}">
+                    {{ option }}
+                </label><br>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <button type="submit">Submit Quiz</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(event.target);
+            let jsonData = {};
+            formData.forEach((value, key) => { jsonData[key] = value });
+
+            fetch("/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                let resultContainer = document.getElementById("result");
+                resultContainer.innerHTML = "You scored " + data.score + " out of " + data.total;
+                data.feedback.forEach(feedback => {
+                    let questionDiv = document.getElementById("question-" + feedback.id);
+                    let explanation = document.createElement("p");
+                    explanation.classList.add("explanation");
+                    explanation.innerText = feedback.explanation;
+                    
+                    if (feedback.is_correct) {
+                        questionDiv.style.backgroundColor = "#d4edda"; // Green for correct
+                    } else {
+                        questionDiv.style.backgroundColor = "#f8d7da"; // Red for wrong
+                        let correctAnswerInfo = document.createElement("p");
+                        correctAnswerInfo.classList.add("correct-answer");
+                        correctAnswerInfo.innerText = "Correct answer: " + feedback.correct_answer;
+                        questionDiv.appendChild(correctAnswerInfo);
+                    }
+                    questionDiv.appendChild(explanation);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

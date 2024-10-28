@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.question {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+label {
+    font-size: 1.1em;
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    color: #333;
+}
+
+.explanation {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+}
+
+.correct-answer {
+    font-size: 1em;
+    color: #dc3545; /* Red for incorrect answer explanation */
+    margin-top: 5px;
+}
+
+/* Correct Answer */
+.correct {
+    background-color: #d4edda; /* Light green */
+}
+
+/* Incorrect Answer */
+.incorrect {
+    background-color: #f8d7da; /* Light red */
+}

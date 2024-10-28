@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "question": "Flask framework is written in which of the following language?",
+        "options": ["Java", "Python", "JavaScrpit"],
+        "answer": "Python",
+        "explanation": "The flask framework is written in python language."
+    },
+    {
+        "id": 2,
+        "question": "Who developed the flask?",
+        "options": ["Armin Ronacher", "Guido van Rossum", "James Gosling"],
+        "answer": "Armin Ronacher",
+        "explanation": "Flask was created by Armin Ronacher of Pocoo, an international group of Python enthusiasts formed in 2004."
+    },
+    {
+        "id": 3,
+        "question": "By default, the flask server is ____?",
+        "options": ["User-level thread", "multi-threaded", "Single-threaded"],
+        "answer": "multi-threaded",
+        "explanation": "By default, the flask server is multi-threaded."
+    },
+    {
+        "id": 4,
+        "question": "____ is a framework for writing command line applications?",
+        "options": ["MarkupSafe", "Jinja", "Click"],
+        "answer": "Click",
+        "explanation": "Click is a framework for writing command-line applications."
+    },
+    {
+        "id": 5,
+        "question": "What is WSGI in Flask?",
+        "options": ["Wide system gateway interface", "Web system gateway interface", "Web server gateway interface"],
+        "answer": "Web server gateway interface",
+        "explanation": "WSGI stands for Web server gateway interface."
+    }
+]
